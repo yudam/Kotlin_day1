@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+
+    val field1: String = "maodayu"
+
+    var field2: String = "mdy"  //编译器支持自动类型判断，即声明时不指定类型，由编译器判断
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,6 +69,26 @@ class MainActivity : AppCompatActivity() {
             .sortedBy { it }
             .map { it.toUpperCase() }
             .forEach { println(it) }
+
+
+        var a: Int? = 10
+        var b: Int? = a
+        var c: Int? = a
+
+        if (b == c) {  //两个==表示值比较
+            println(true)
+        }
+
+        if (b === c) { //三个===表示比较地址
+            println(false)
+        }
+
+
+        val bb: Byte = 1
+        val cc: Int = bb.toInt() //低类型不能够显示转化为高类型
+
+        val a1 = 1L + 3   //Long+Int可以显示转化为Long
+
     }
 
     //when表达式
@@ -84,6 +109,34 @@ class MainActivity : AppCompatActivity() {
             return obj.length
         }
         return null
+    }
+
+
+    public fun sun(a: Int, b: Int): Unit {
+
+    }
+
+
+    public fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
+
+    fun test(a: Int, b: Int) = a + b
+
+    public fun test1(a: Int, b: Int) = a + b   //public 修饰的方法必须明确写出返回值类型，Unit则可以省略
+
+
+    //Kotlin支持三个引号扩起来的字符串，支持多行字符串
+    fun moreString(args: Array<String>) {
+        val strs = """maodayu
+            |mdy
+            |m"""
+
+        val strs2="""
+            maodayu
+            yu
+            mao
+        """.trimMargin()   //祛除空格
     }
 
 }
